@@ -1,0 +1,2 @@
+mx106
+-DCATKIN_DEVEL_PREFIX=/home/noreply/Mx106/devel -DCMAKE_INSTALL_PREFIX=/home/noreply/Mx106/install -G Unix Makefiles

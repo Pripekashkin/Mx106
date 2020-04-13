@@ -1,0 +1,8 @@
+prefix=/home/noreply/Mx106/devel
+
+Name: mx106
+Description: Description of mx106
+Version: 0.0.0
+Cflags: 
+Libs: -L${prefix}/lib 
+Requires: 

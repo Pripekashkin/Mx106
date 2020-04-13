@@ -1,0 +1,123 @@
+<?xml version="1.0" ?>
+
+<robot name="mrm" xmlns:xacro="http://www.ros.org/wiki/xacro">
+  
+  <!-- BGN - Include -->
+
+  <xacro:include filename="$(find mx106)/urdf/links_joints.xacro" />
+  <!-- END - Include -->
+  
+  <!-- BGN - Robot description  -->
+  
+ <material name="white">
+   <color rgba="1 1 1 1"/>
+ </material>
+
+			  
+  <m_link_mesh name="Base"
+              origin_rpy="1.57 0 0" origin_xyz="0 0 0"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/0base.stl"
+              meshscale="0.001 0.001 0.001" />
+			  
+              
+  <m_joint name="Rotate" type="revolute"
+           axis_xyz="0 0 1"
+           origin_rpy="0 0 0" origin_xyz="0 0 0.0753"
+           parent="Base" child="link_01"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+           
+  <m_link_mesh name="link_01"
+              origin_rpy="1.57 0 0" origin_xyz="0 0 0"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/1rotate.stl"
+              meshscale="0.001 0.001 0.001" />
+  
+    <m_joint name="Rotate1" type="revolute"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 0" origin_xyz="0 0 0.0616"
+           parent="link_01" child="link_02"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+		   
+  <m_link_mesh name="link_02"
+              origin_rpy="1.57 0 0" origin_xyz="0 0 -0.018"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/2branch.stl"
+              meshscale="0.001 0.001 0.001" />		   
+			  
+    <m_joint name="Rotate2" type="revolute"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 0" origin_xyz="0 0.062 0.2761"
+           parent="link_02" child="link_03"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+		   
+  <m_link_mesh name="link_03"
+              origin_rpy="1.57 0 0" origin_xyz="0 -0.018 -0.018"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/3branch.stl"
+              meshscale="0.001 0.001 0.001" />	
+
+    <m_joint name="Rotate3" type="revolute"
+           axis_xyz="0 1 0"
+           origin_rpy="0 0 0" origin_xyz="0 0.3006 0"
+           parent="link_03" child="link_04"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+		   
+  <m_link_mesh name="link_04"
+              origin_rpy="1.57 0 0" origin_xyz="0 0 -0.018"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/4rotate.stl"
+              meshscale="0.001 0.001 0.001" />					  
+              
+    <m_joint name="Rotate4" type="revolute"
+           axis_xyz="1 0 0"
+           origin_rpy="0 0 0" origin_xyz="0 0.0391 0"
+           parent="link_04" child="link_05"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+		   
+  <m_link_mesh name="link_05"
+              origin_rpy="1.57 0 0" origin_xyz="0 -0.0145 -0.023"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/5axis.stl"
+              meshscale="0.001 0.001 0.001" />				  
+			  
+    <m_joint name="Rotate5" type="revolute"
+           axis_xyz="0 0 1"
+           origin_rpy="0 0 0" origin_xyz="0 0.1132 0"
+           parent="link_05" child="link_06"
+           limit_e="1000" limit_l="-3.14" limit_u="3.14" limit_v="0.5" />
+		   
+  <m_link_mesh name="link_06"
+              origin_rpy="1.57 0 0" origin_xyz="0 -0.018 -0.029"
+              mass="157.633"
+              ixx="13.235" ixy="0" ixz="0"
+              iyy="13.235" iyz="0"
+              izz="9.655"
+              meshfile="package://mx106/meshes/6brush.stl"
+              meshscale="0.001 0.001 0.001" />			  
+  <!-- END - Robot description -->
+  
+  <gazebo>
+    <plugin name="gazebo_ros_control" filename="libgazebo_ros_control.so">
+    </plugin>
+  </gazebo>
+  
+</robot>
